@@ -10,6 +10,7 @@ class Neo:
                           'create_node': self._create_if_doesnt_exist,
                           'create_rel': self._create_rel,
                           'list_nodes_class': self._list_nodes_class,
+                          'list_node_rels': self._list_node_rels,
                           'clean_db': self._clean_db,
                           'del_class': self._del_class,
                           'del_node': self._del_node}
@@ -69,12 +70,22 @@ class Neo:
     @staticmethod
     def _list_nodes_class(tx, node_class):
         node_list = list()
-        query = f'MATCH (n:{node_class}) RETURN n.name'
+        query = f'MATCH (n:{node_class}) RETURN {{id: id(n), name:n.name, label:labels(n), props:properties(n) }}'
         print(query)
         result = tx.run(query)
         for res in result:
             node_list.append(res)
         return node_list
+
+    @staticmethod
+    def _list_node_rels(tx, node_name):
+        rel_list = list()
+        query = f"MATCH(n {{name:'{node_name}'}})-[r] - (b) RETURN r"
+        print(query)
+        result = tx.run(query)
+        for res in result:
+            rel_list.append(res)
+        return rel_list
 
     @staticmethod
     def _clean_db(tx):
