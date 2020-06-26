@@ -1,0 +1,18 @@
+
+m.exec(tx_type='create_node', node_class='person',  node_name='Adam Malysz')
+m.exec(tx_type='create_node', node_class='country',  node_name='Poland')
+m.exec(tx_type='create_node', node_class='city',  node_name='Warsaw')
+m.exec(tx_type='set_property', node_name='Warsaw', node_prop='area', prop='517km2')
+m.exec(tx_type='create_rel', nc1='city', n1='Warsaw', rel='IS_CAPITAL', nc2='country', n2='Poland')
+m.write_tx(tx_type='create_node', node_class='city',  node_name='Kampala')
+m.exec(tx_type='del_class', node_class = 'person')
+node_list = m.exec('list_nodes_class', node_class='city')
+
+
+
+
+#neo4j start
+#https://neo4j.com/docs/api/python-driver/current/
+
+
+git remote add origin https://github.com/PatrickChodowski/neo_web.git
