@@ -94,11 +94,3 @@ class Neo:
         print(query)
         tx.run(query)
 
-#driver.close()
-# node_list[0].keys() #n.name
-# node_list[0].index()
-# node_list[0].get()
-# node_list[0].value()
-# node_list[0].values()
-# node_list[0].items()
-# node_list[0].data()

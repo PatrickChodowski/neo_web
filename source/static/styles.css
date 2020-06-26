@@ -1,0 +1,15 @@
+:root {
+    --main-color1: #0e2240;
+    --main-color2: #fec524 ;
+    --main-color3: #8b2131;
+    --main-color4: black;
+    --main-color5: white;
+    --main-color6: #4F92CE;
+    --main-color7: #bfbfbf;
+
+    --main-card-width: 290px;
+}
+body {
+   background-color: var(--main-color5);
+    overflow:scroll;
+}

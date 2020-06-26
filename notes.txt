@@ -16,3 +16,13 @@ node_list = m.exec('list_nodes_class', node_class='city')
 
 
 git remote add origin https://github.com/PatrickChodowski/neo_web.git
+
+
+#driver.close()
+# node_list[0].keys() #n.name
+# node_list[0].index()
+# node_list[0].get()
+# node_list[0].value()
+# node_list[0].values()
+# node_list[0].items()
+# node_list[0].data()
