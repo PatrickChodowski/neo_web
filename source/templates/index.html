@@ -6,13 +6,15 @@
 <br>
 <head>
     <meta charset="UTF-8">
-    <title>chess vis</title>
+    <title>neo</title>
 
 </head>
 <body>
 
-<div class="container-fluid" >
-    {{country_list}}
+<div class="container-fluid">
+    <div class="node_pool" id='main-node-pool' ondrop="drop(event)" ondragover="allowDrop(event)">
+        {% include "node.html" %}
+    </div>
 </div>
 
 

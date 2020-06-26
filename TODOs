@@ -1,6 +1,11 @@
 
 - create html element for each node
-    - should be clickable
-    - should be draggable around
     - should show full info in external/side panel
     - options on p-click sending functions to backend
+
+- click on id should bring the related nodes + connections
+    - retrieve id
+    - query related nodes to that id
+    - visualize connected nodes
+    - visualize connections
+

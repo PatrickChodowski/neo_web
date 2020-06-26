@@ -11,5 +11,43 @@
 }
 body {
    background-color: var(--main-color5);
-    overflow:scroll;
+   overflow:scroll;
+}
+
+#main-node-pool {
+    background-color: var(--main-color4);
+    height: 600px;
+}
+
+.node_pool {
+
+}
+
+.ul_nodes {
+    margin: 30px;
+}
+
+.node {
+    margin: 10px;
+    background: var(--main-color6);
+    max-width:200px;
+    border-radius: 5px;
+}
+
+.node:hover {
+    background: var(--main-color3);
+}
+
+.node_button {
+    width: 100%;
+    position: relative;
+    text-align: left;
+    padding: 5px;
+    background: var(--main-color6);
+    border-radius: 5px;
+
+}
+
+.node_button:hover {
+    background: var(--main-color3);
 }

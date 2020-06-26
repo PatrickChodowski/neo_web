@@ -1,0 +1,23 @@
+
+
+
+
+<ul class="ul_nodes">
+    {% for node  in node_list %}
+        <div class="node" id={{node[0]}} draggable="true" ondragstart="drag(event)">
+            <button class="node_button" data-toggle="modal" data-target="#{{node[0]}}_md">
+                {{node[0]}}
+            </button>
+        </div>
+
+    <div class="modal fade" id="{{node[0]}}_md" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {{node[0]}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</ul>

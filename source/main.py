@@ -22,7 +22,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
-    return render_template('index.html', country_list=country_list)
+    return render_template('index.html', node_list=country_list)
 
 
 if __name__ == '__main__':
