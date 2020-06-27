@@ -80,11 +80,20 @@ class Neo:
     @staticmethod
     def _list_node_rels(tx, node_name):
         rel_list = list()
-        query = f"MATCH(n {{name:'{node_name}'}})-[r] - (b) RETURN r"
+        query = f"MATCH(n {{name:'{node_name}'}})-[r] - (b) RETURN r, {{end_id: id(b), end_name:b.name, end_label:labels(b), end_props:properties(b) }}"
         print(query)
         result = tx.run(query)
         for res in result:
-            rel_list.append(res)
+            resd = dict()
+            resd['rel_name'] = res['r']['name']
+            resd['rel_type'] = res['r'].type
+            resd['rel_id'] = res['r'].id
+            resd['start_node_id'] = res['r'].start_node.id
+            resd['end_node_id'] = res['r'].end_node.id
+            resd['end_name'] = res[1]['end_name']
+            resd['end_label'] = res[1]['end_label']
+            resd['end_props'] = res[1]['end_props']
+            rel_list.append(resd)
         return rel_list
 
     @staticmethod

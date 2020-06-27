@@ -1,5 +1,6 @@
 import sys
 import yaml
+import json
 #sys.path.append('./source')
 from source.neo import Neo
 import os
@@ -30,6 +31,13 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 @app.route('/index', methods=['GET'])
 def index():
     return render_template('index.html', node_list=node_list)
+
+@app.route('/find_rels', methods=['POST'])
+def find_rels():
+    node_name = json.loads(request.data)
+    rels_list = m.exec('list_node_rels', node_name=node_name)
+    return str(rels_list)
+
 
 
 if __name__ == '__main__':

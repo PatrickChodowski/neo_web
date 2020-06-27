@@ -1,10 +1,9 @@
 
 - create html element for each node
     - options on p-click sending functions to backend
+    - jquery function to show info in side panel
 
 - click on name should bring the related nodes + connections
-    - query endpoints of relations
-    - query related nodes to that id
     - visualize connected nodes
     - visualize connections
 

@@ -3,21 +3,7 @@
 <ul class="ul_nodes">
     {% for node  in node_list %}
         <div class="node" id={{node[0]}} draggable="true" ondragstart="drag(event)" ondrop="return false;" ondragover="return false;">
-            <button class="node_button" data-toggle="modal" data-target="#{{node[0]['key']}}" ondrop="return false; " ondragover="return false;">
                 {{node[0]['name']}}
-            </button>
         </div>
-
-    <div class="modal fade" id="{{node[0]['key']}}" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-body">
-                    {{node[0]['name']}} <br>
-                    {{node[0]['label'][0]}} <br>
-                    {{node[0]['props']}}
-                </div>
-            </div>
-        </div>
-    </div>
     {% endfor %}
 </ul>

@@ -2,6 +2,23 @@
 
 
 $("document").ready(function(){
+
+    $(".node").on("click", find_rels)
+
+    function find_rels() {
+        console.log('REQUEST SENT')
+        var node_name = $.trim(this.innerHTML);
+
+              $.ajax({
+              url:"/find_rels",
+              type:"POST",
+              data: JSON.stringify(node_name),
+              contentType:"application/json;charset=UTF-8",
+              success:       function(data, status){
+                    alert("Data: " + data + "\nStatus: " + status);
+                  }
+            })
+      }
 })
 
 function allowDrop(ev) {
