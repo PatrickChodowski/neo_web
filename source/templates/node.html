@@ -2,7 +2,7 @@
 
 <ul class="ul_nodes">
     {% for node  in node_list %}
-        <div class="node" id={{node[0]}} draggable="true" ondragstart="drag(event)" ondrop="return false;" ondragover="return false;">
+        <div class="node" id={{node[0]['key']}} draggable="true" ondragstart="drag(event)" ondrop="return false;" ondragover="return false;">
                 {{node[0]['name']}}
         </div>
     {% endfor %}

@@ -26,3 +26,6 @@ git remote add origin https://github.com/PatrickChodowski/neo_web.git
 # node_list[0].values()
 # node_list[0].items()
 # node_list[0].data()
+
+
+m.exec(tx_type='create_rel', nc1='city', n1='Washington DC', rel='IS_CAPITAL', nc2='country', n2='USA')

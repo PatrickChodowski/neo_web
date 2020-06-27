@@ -1,0 +1,9 @@
+
+
+<ul class="ul_rels">
+    {% for key, value  in rels_list.items() %}
+        <div class="rel" id={{value['start_key']}}_{{value['end_key']}}>
+            {{value['start_key']}}  {{value['end_key']}}
+        </div>
+    {% endfor %}
+</ul>

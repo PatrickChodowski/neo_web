@@ -11,6 +11,7 @@ class Neo:
                           'create_rel': self._create_rel,
                           'list_nodes_class': self._list_nodes_class,
                           'list_node_rels': self._list_node_rels,
+                          'list_rels': self._list_rels,
                           'clean_db': self._clean_db,
                           'del_class': self._del_class,
                           'del_node': self._del_node}
@@ -79,7 +80,7 @@ class Neo:
 
     @staticmethod
     def _list_node_rels(tx, node_name):
-        rel_list = list()
+        rels_dict = dict()
         query = f"MATCH(n {{name:'{node_name}'}})-[r] - (b) RETURN r, {{end_id: id(b), end_name:b.name, end_label:labels(b), end_props:properties(b) }}"
         print(query)
         result = tx.run(query)
@@ -88,13 +89,40 @@ class Neo:
             resd['rel_name'] = res['r']['name']
             resd['rel_type'] = res['r'].type
             resd['rel_id'] = res['r'].id
-            resd['start_node_id'] = res['r'].start_node.id
-            resd['end_node_id'] = res['r'].end_node.id
             resd['end_name'] = res[1]['end_name']
+            resd['end_node_id'] = res[1]['end_id']
             resd['end_label'] = res[1]['end_label']
             resd['end_props'] = res[1]['end_props']
-            rel_list.append(resd)
-        return rel_list
+
+            rels_dict[f"rel_{node_name}_{resd['rel_name']}_{resd['end_name']}"] = resd
+        return rels_dict
+
+    @staticmethod
+    def _list_rels(tx):
+        rels_dict = dict()
+        query = f"MATCH (n) -[r] -> (b) RETURN {{start_id: id(n), start_name:n.name, start_label:labels(n), start_props:properties(n) }}, r, {{end_id: id(b), end_name:b.name, end_label:labels(b), end_props:properties(b) }}"
+        print(query)
+        result = tx.run(query)
+        for res in result:
+            resd = dict()
+            resd['start_name'] =    res[0]['start_name']
+            resd['start_node_id'] = res[0]['start_id']
+            resd['start_label'] =   res[0]['start_label']
+            resd['start_props'] =   res[0]['start_props']
+            resd['rel_name'] = res['r']['name']
+            resd['rel_type'] = res['r'].type
+            resd['rel_id'] = res['r'].id
+            resd['end_name'] = res[2]['end_name']
+            resd['end_node_id'] = res[2]['end_id']
+            resd['end_label'] = res[2]['end_label']
+            resd['end_props'] = res[2]['end_props']
+
+            resd['start_key'] = res[0]['start_name'].lower().replace(' ', '')
+            resd['end_key'] = res[2]['end_name'].lower().replace(' ', '')
+
+            rels_dict[f"rel_{resd['start_name']}_{resd['rel_name']}_{resd['end_name']}"] = resd
+        return rels_dict
+
 
     @staticmethod
     def _clean_db(tx):

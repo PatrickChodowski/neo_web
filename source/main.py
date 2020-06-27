@@ -14,8 +14,9 @@ m = Neo(config['uri'], config['user'], config['pwd'])
 
 country_list = m.exec('list_nodes_class', node_class='country')
 city_list = m.exec('list_nodes_class', node_class='city')
-
+rels_list = m.exec('list_rels')
 node_list = country_list+city_list
+
 
 for nl in node_list:
     nl[0]['key'] = nl[0]['name'].lower().replace(' ', '')
@@ -30,13 +31,15 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
-    return render_template('index.html', node_list=node_list)
+    return render_template('index.html',
+                           node_list=node_list,
+                           rels_list=rels_list)
 
 @app.route('/find_rels', methods=['POST'])
 def find_rels():
     node_name = json.loads(request.data)
-    rels_list = m.exec('list_node_rels', node_name=node_name)
-    return str(rels_list)
+    rels_dict = m.exec('list_node_rels', node_name=node_name)
+    return rels_dict
 
 
 
