@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<head>
+    <meta charset="UTF-8">
+    <title>neo</title>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="node_pool" id='main-node-pool' ondrop="drop(event)" ondragover="allowDrop(event)">
+        {% include "node.html" %}
+    </div>
+    <div class="rel_pool" id='main-rel-pool'>
+        {% include "rel.html" %}
+    </div>
+</div>
+
+
+</body>
+{% endblock %}

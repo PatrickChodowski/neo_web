@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<head>
+    <meta charset="UTF-8">
+    <title>neo</title>
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <canvas id="canvas"></canvas>
+    <script src="{{url_for('static', filename='./canvas.js')}}"> </script>
+</div>
+
+
+</body>
+{% endblock %}
