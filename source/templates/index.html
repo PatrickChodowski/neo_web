@@ -10,15 +10,11 @@
 
 </head>
 <body>
+    <div id="cy"></div>
 
-<div class="container-fluid">
-    <div class="node_pool" id='main-node-pool' ondrop="drop(event)" ondragover="allowDrop(event)">
-        {% include "node.html" %}
-    </div>
-    <div class="rel_pool" id='main-rel-pool'>
-        {% include "rel.html" %}
-    </div>
-</div>
+    <script src="{{url_for('static', filename='cyto_test.js')}}"></script>
+
+
 
 
 </body>

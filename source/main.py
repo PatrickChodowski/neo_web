@@ -9,7 +9,7 @@ import datetime as dt
 
 with open(r'../config.yml') as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
-m = Neo(config['uri'], config['user'], config['pwd'])
+m = Neo(config['uri_ubuntu'], config['user'], config['pwd'])
 #m.exec(tx_type='create_node', node_class='country',  node_name='New Zealand')
 
 country_list = m.exec('list_nodes_class', node_class='country')
